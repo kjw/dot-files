@@ -1,0 +1,15 @@
+[user]
+	name = Karl Jonathan Ward
+	email = karl.j.ward@gmail.com
+[github]
+	user = kjw
+	token = f4835f68265cb385dc22a54e0c81748b
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[core]
+	editor = emacsclient
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --

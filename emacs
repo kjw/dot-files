@@ -44,6 +44,9 @@
 	       :after (progn
 			(require 'auto-complete-config)
 			(ac-config-default)))
+        (:name ace-jump-mode
+	       :after (progn
+			(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)))
 	(:name js2-mode
 	       :after (progn
 			(setq-default js2-basic-offset 2)))))

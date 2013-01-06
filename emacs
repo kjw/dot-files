@@ -34,12 +34,6 @@
 			   (global-set-key [(shift meta x)] 
 					   'smex-major-mode-commands)
 			   (smex-major-mode-commands)))))
-	(:name deft
-	       :after (progn
-			(global-set-key [f1] 'deft)
-			(setq deft-directory "~/Dropbox/deft")
-			(setq deft-extension "org")
-			(setq deft-text-mode 'org-mode)))
 	(:name auto-complete
 	       :after (progn
 			(require 'auto-complete-config)

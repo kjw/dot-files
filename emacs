@@ -125,3 +125,57 @@
   (interactive)
   (insert (shell-command-to-string (concat "ssh " host " pbpaste"))))
 
+;; Move lines up and down
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
+
+(global-set-key (kbd "M-[ B") 'move-line-down)
+(global-set-key (kbd "M-[ a") 'move-line-up)
+
+;; Make new lines above or below
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
+(global-set-key (kbd "<C-return>") 'open-line-below)
+(global-set-key (kbd "<C-S-return>") 'open-line-above)
+
+;; Set a key for the buffer menu without using C-b since
+;; that is taken by tmux.
+(global-set-key (kbd "C-x M-b") 'buffer-menu)
+
+;; Set location of org mode todo files
+(defun read-lines (file-path)
+  (with-temp-buffer
+    (insert-file-contents file-path)
+    (split-string (buffer-string) "\n" t)))
+
+(setq org-agenda-files (read-lines "~/org-files/agenda"))
+
+;; Set up easy access to a bunch of common views
+(global-set-key (kbd "<f1>") 'org-agenda)
+(global-set-key (kbd "<f2>") 'dired)
+(global-set-key (kbd "<f3>") 'magit-status)

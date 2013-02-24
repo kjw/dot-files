@@ -4,4 +4,5 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
+# keychain stuff for ubuntu/arch
+[[ -f keychain ]] && eval $(keychain --eval --agents ssh -Q --quiet id_rsa)

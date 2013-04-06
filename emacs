@@ -69,12 +69,13 @@
 ;; handy and not so handy modes
 ;(tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 (ido-mode +1)
 (show-paren-mode +1)
 (global-linum-mode +1)
 (column-number-mode +1)
 (size-indication-mode +1)
-;(scroll-bar-mode -1)
 (blink-cursor-mode -1)
 (setq inhibit-splash-screen +1)
 (setq visible-bell +1)
@@ -95,6 +96,9 @@
 ;; set zenburn
 (add-to-list 'custom-theme-load-path "~/.emacs-themes/")
 (load-theme 'zenburn t)
+
+;; and set some face attributes
+(set-default-font "Inconsolata-16")
 
 ;; OSX pbcopy/pbpaste integration
 (setq pb-remote-host nil)
@@ -179,3 +183,15 @@
 (global-set-key (kbd "<f1>") 'org-agenda)
 (global-set-key (kbd "<f2>") 'dired)
 (global-set-key (kbd "<f3>") 'magit-status)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/org-files/projects/crmds.org" "~/org-files/projects/smallpub.org" "~/org-files/projects/conneg.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

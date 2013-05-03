@@ -6,3 +6,5 @@ export PATH=/usr/local/bin:$PATH:~/bin:~/Applications/jruby/bin
 
 # OSX ruby stuff
 eval "$(rbenv init -)"
+
+alias ls="ls -G"

@@ -48,7 +48,7 @@
 (setq my-packages 
       (append 
        '(clojure-mode ruby-mode haml-mode 
-	 paredit yari nrepl helm)
+	 paredit yari nrepl helm rainbow-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)

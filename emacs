@@ -179,15 +179,51 @@
 
 (setq org-agenda-files (read-lines "~/org-files/agenda"))
 
+;; Bunch of clojure functions
+(defun char-at-point ()
+  (interactive)
+  (buffer-substring-no-properties (point) (+ 1 (point))))
+ 
+(defun clj-string-name (s)
+  (substring s 1 -1))
+ 
+(defun clj-keyword-name (s)
+  (substring s 1))
+ 
+(defun delete-and-extract-sexp ()
+  (let* ((begin (point)))
+    (forward-sexp)
+    (let* ((result (buffer-substring-no-properties begin (point))))
+      (delete-region begin (point))
+      result)))
+ 
+(defun toggle-clj-keyword-string ()
+  (interactive)
+  (save-excursion
+    (if (equal 1 (point))
+	(message "beginning of file reached, this was probably a mistake.")
+      (cond ((equal "\"" (char-at-point))
+	     (insert ":" (clj-string-name (delete-and-extract-sexp))))
+	    ((equal ":" (char-at-point))
+	     (insert "\"" (clj-keyword-name (delete-and-extract-sexp)) "\""))
+	    (t (progn
+		 (backward-char)
+		 (toggle-keyword-string)))))))
+ 
+(global-set-key (kbd "C-:") 'toggle-clj-keyword-string)
+
 ;; Set up easy access to a bunch of common views
 (global-set-key (kbd "<f1>") 'org-agenda)
 (global-set-key (kbd "<f2>") 'dired)
 (global-set-key (kbd "<f3>") 'magit-status)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "752b605b3db4d76d7d8538bbc6fe8828f6d92a720c0ea334b4e01cea44d4b7a9" "c9d00d43bd5ad4eb7fa4c0e865b666216dfac4584eede68fbd20d7582013a703" default)))
+ '(fci-rule-color "#383838")
  '(org-agenda-files (quote ("~/org-files/projects/crmds.org" "~/org-files/projects/smallpub.org" "~/org-files/projects/conneg.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

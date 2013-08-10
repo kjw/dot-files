@@ -2,7 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil t) 
   (url-retrieve 
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el" 
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
    (lambda (s) 
      (let (el-get-master-branch)
      (goto-char (point-max))
@@ -13,7 +13,7 @@
 (setq el-get-sources
       '((:name magit
 	       :after (progn
-			(global-set-key (kbd "C-x C-z") 'magit-status)))
+			(global-set-key (kbd "<f3>") 'magit-status)))
 	(:name smex
 	       :after (progn
 			(global-set-key 
@@ -41,14 +41,24 @@
         (:name ace-jump-mode
 	       :after (progn
 			(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)))
+        (:name haml-mode
+	       :after (progn
+			(add-hook 'haml-mode-hook
+				  (lambda ()
+				    (setq indent-tabs-mode nil)
+				    (define-key haml-mode-map "\C-m" 'newline-and-indent)))))
+	(:name expand-region
+	       :after (progn
+			(global-set-key (kbd "C-=") 'er/expand-region)))
 	(:name js2-mode
 	       :after (progn
 			(setq-default js2-basic-offset 2)))))
 
 (setq my-packages 
       (append 
-       '(clojure-mode ruby-mode haml-mode 
-	 paredit yari nrepl helm rainbow-mode)
+       '(clojure-mode ruby-mode
+	 smartparens yari nrepl helm rainbow-mode
+	 multiple-cursors)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
@@ -88,10 +98,7 @@
 (server-start)
 
 ;; haml-mode stuff
-(add-hook 'haml-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+
 
 ;; set zenburn
 (add-to-list 'custom-theme-load-path "~/.emacs-themes/")
@@ -147,8 +154,8 @@
       (transpose-lines -1))
     (move-to-column col)))
 
-(global-set-key (kbd "M-[ B") 'move-line-down)
-(global-set-key (kbd "M-[ a") 'move-line-up)
+(global-set-key (kbd "C-<down>") 'move-line-down)
+(global-set-key (kbd "C-<up>") 'move-line-up)
 
 ;; Make new lines above or below
 (defun open-line-below ()
@@ -215,7 +222,11 @@
 ;; Set up easy access to a bunch of common views
 (global-set-key (kbd "<f1>") 'org-agenda)
 (global-set-key (kbd "<f2>") 'dired)
-(global-set-key (kbd "<f3>") 'magit-status)
+
+;; Multiple cursor key bindings
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c <up>") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c a") 'mc/mark-all-like-this)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -231,3 +242,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+

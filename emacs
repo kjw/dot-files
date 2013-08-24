@@ -9,6 +9,9 @@
      (eval-print-last-sexp)))))
 (require 'el-get)
 
+(add-to-list 'load-path "~/.emacs.d/notmuch")
+(require 'notmuch)
+
 ;; set up custom el-get sources
 (setq el-get-sources
       '((:name magit

@@ -8,3 +8,6 @@ export PATH=/usr/local/bin:$PATH:~/bin:~/Applications/jruby/bin
 eval "$(rbenv init -)"
 
 alias ls="ls -G"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

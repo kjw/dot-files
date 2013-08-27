@@ -1,0 +1,25 @@
+Config { font = "xft:Inconsolata:size=12:antialias=true"
+       , borderColor = "#586e75"
+       , border = TopB
+       , bgColor = "#fdf6e3"
+       , fgColor = "#657b83"
+       , position = Top
+       , lowerOnStart = True
+       , persistent = False
+       , hideOnStart = False
+       , sepChar = "%"
+       , alignSep = "}{"
+       , allDesktops = True
+       , overrideRedirect = True
+       , template = " %battery% | %cpu% | %memory% | %wlp2s0% }{ %EGVN% | %date% "
+       , commands = 
+         [ 
+           Run Weather "EGVN" ["-t","<tempC>C <rh>%","-L","14","-H","25","--normal","#859900","--high","#cb4b16","--low","#2aa198"] 36000
+         , Run Network "wlp2s0" ["-L","0","-H","32","--normal","#859900","--high","#b58900"] 10
+         , Run Cpu ["-L","3","-H","50","--normal","#859900","--high","#b58900"] 10
+         , Run Memory ["-t","Mem: <usedratio>%"] 10
+         , Run Date "%a %b %_d %Y %H:%M" "date" 10
+         , Run Battery ["-t","<left>% / <timeleft>","-L","50","-H","75","-h","#859900","-n","yell","-l","#cb4b16"] 10
+         ]
+       }
+

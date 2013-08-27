@@ -1,4 +1,6 @@
 ;; ensure el-get is installed
+(set-face-attribute 'default nil :font "Inconsolata-12")
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil t) 
   (url-retrieve 
@@ -53,6 +55,12 @@
 	(:name expand-region
 	       :after (progn
 			(global-set-key (kbd "C-=") 'er/expand-region)))
+	(:name smooth-scroll
+	       :after (progn
+	       	      (smooth-scroll-mode +1)))
+	(:name git-gutter
+	       :after (progn
+	       	      (global-git-gutter-mode +1)))
 	(:name js2-mode
 	       :after (progn
 			(setq-default js2-basic-offset 2)))))
@@ -61,7 +69,7 @@
       (append 
        '(clojure-mode ruby-mode
 	 smartparens yari nrepl helm rainbow-mode
-	 multiple-cursors)
+	 multiple-cursors gist)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)

@@ -3,6 +3,7 @@
 	email = karl.j.ward@gmail.com
 [github]
 	user = kjw
+	oauth-token = c5e3912798f2b639305990558aa198a581871cd7
 [color]
 	branch = auto
 	diff = auto
@@ -12,3 +13,5 @@
 	editor = emacsclient
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+[push]
+	default = simple

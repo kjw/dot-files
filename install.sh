@@ -9,5 +9,5 @@ for link in $links; do
 done
 
 mkdir ~/.xmonad
-cp xmonad.hs ~/.xmonad/xmonad.hs
+ln -s $dir/xmonad.hs ~/.xmonad/xmonad.hs
 

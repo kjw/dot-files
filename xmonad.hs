@@ -18,4 +18,11 @@ xmonad $ defaultConfig
      `additionalKeysP`
      [ ("M-o", spawn "xrandr --output eDP1 --auto")
      , ("M-S-o", spawn "xrandr --output eDP1 --off")
-     , ("M-r", spawn "~/refresh") ]
+     , ("M-w", spawn "xrandr --auto")
+     , ("M-S-m", spawn "thunderbird")
+     , ("M-S-b", spawn "chromium")
+     , ("M-S-n", spawn "skype")
+     , ("M-up", spawn "pulseaudio-ctl up")
+     , ("M-down", spawn "pulseaudio-ctl up")
+     , ("M-left", spawn "pulseaudio-ctl mute")
+     , ("M-p", spawn "dmenu_run -fn 'Inconsolata-20' -b -nb '#002b36' -nf '#93a1a1' -sb '#073642' -sf '#cb4b16' -p '?>'")]

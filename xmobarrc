@@ -19,7 +19,7 @@ Config { font = "xft:Inconsolata:size=12:antialias=true"
          , Run Cpu ["-L","3","-H","50","--normal","#859900","--high","#b58900"] 10
          , Run Memory ["-t","Mem: <usedratio>%"] 10
          , Run Date "%a %b %_d %Y %H:%M" "date" 10
-         , Run Battery ["-t","<left>% / <timeleft>","-L","50","-H","75","-h","#859900","-n","yell","-l","#cb4b16"] 10
+         , Run Battery ["-t","<left>% / <timeleft>","-L","50","-H","75","-h","#859900","-l","#cb4b16"] 10
          ]
        }
 

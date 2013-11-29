@@ -1,5 +1,6 @@
 ;; ensure el-get is installed
-(set-face-attribute 'default nil :font "Inconsolata-12")
+
+(setq org-s5-theme "railscast")
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil t) 
@@ -12,13 +13,17 @@
 (require 'el-get)
 
 ;(add-to-list 'load-path "~/.emacs.d/notmuch")
-;(require 'notmuch)
+(require 'notmuch)
 
 ;; set up custom el-get sources
 (setq el-get-sources
       '((:name magit
 	       :after (progn
 			(global-set-key (kbd "<f3>") 'magit-status)))
+	(:name org-s5
+	       :after (progn
+			(require 'org-export-as-s5)
+			(setq org-s5-theme "railscast")))
 	(:name smex
 	       :after (progn
 			(global-set-key 
@@ -42,7 +47,8 @@
 	(:name auto-complete
 	       :after (progn
 			(require 'auto-complete-config)
-			(ac-config-default)))
+			(ac-config-default)
+			(global-auto-complete-mode 1)))
         (:name ace-jump-mode
 	       :after (progn
 			(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)))
@@ -57,19 +63,24 @@
 			(global-set-key (kbd "C-=") 'er/expand-region)))
 	(:name smooth-scroll
 	       :after (progn
-	       	      (smooth-scroll-mode +1)))
+	       	        (smooth-scroll-mode +1)))
 	(:name git-gutter
 	       :after (progn
-	       	      (global-git-gutter-mode +1)))
+	       	        (require 'git-gutter)
+	                (global-git-gutter-mode +1)))
+	(:name helm
+	       :after (progn
+			(helm-mode 1)))
 	(:name js2-mode
 	       :after (progn
 			(setq-default js2-basic-offset 2)))))
 
 (setq my-packages 
       (append 
-       '(clojure-mode ruby-mode
-	 smartparens yari nrepl helm rainbow-mode
-	 multiple-cursors gist)
+       '(clojure-mode ruby-mode cider
+	 smartparens yari helm rainbow-mode
+	 multiple-cursors gist smooth-scrolling
+	 markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
@@ -113,7 +124,7 @@
 (load-theme 'solarized-light t)
 
 ;; and set some face attributes
-(set-default-font "Inconsolata-16")
+(set-default-font "Inconsolata-12")
 
 ;; OSX pbcopy/pbpaste integration
 (setq pb-remote-host nil)
@@ -243,7 +254,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes (quote ("47d67fd920f3b2c4407b59bcefab7e8af35f8db297bc15531eb4b528fe661ccd" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "752b605b3db4d76d7d8538bbc6fe8828f6d92a720c0ea334b4e01cea44d4b7a9" "c9d00d43bd5ad4eb7fa4c0e865b666216dfac4584eede68fbd20d7582013a703" default)))
  '(fci-rule-color "#383838")
- '(org-agenda-files (quote ("~/org-files/projects/crmds.org" "~/org-files/projects/smallpub.org" "~/org-files/projects/conneg.org")) t))
+ '(org-agenda-files (quote ("~/org-files/projects/crmds.org" "~/org-files/projects/smallpub.org" "~/org-files/projects/conneg.org")) t)
+ '(send-mail-function nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

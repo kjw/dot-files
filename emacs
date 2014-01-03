@@ -234,7 +234,7 @@
 	     (insert "\"" (clj-keyword-name (delete-and-extract-sexp)) "\""))
 	    (t (progn
 		 (backward-char)
-		 (toggle-keyword-string)))))))
+		 (toggle-clj-keyword-string)))))))
  
 (global-set-key (kbd "C-:") 'toggle-clj-keyword-string)
 
@@ -254,7 +254,6 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes (quote ("47d67fd920f3b2c4407b59bcefab7e8af35f8db297bc15531eb4b528fe661ccd" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "752b605b3db4d76d7d8538bbc6fe8828f6d92a720c0ea334b4e01cea44d4b7a9" "c9d00d43bd5ad4eb7fa4c0e865b666216dfac4584eede68fbd20d7582013a703" default)))
  '(fci-rule-color "#383838")
- '(org-agenda-files (quote ("~/org-files/projects/crmds.org" "~/org-files/projects/smallpub.org" "~/org-files/projects/conneg.org")) t)
  '(send-mail-function nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

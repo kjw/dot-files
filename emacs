@@ -106,12 +106,21 @@
 (ido-mode +1)
 (show-paren-mode +1)
 (global-linum-mode +1)
+(global-hl-line-mode +1)
 (column-number-mode +1)
 (size-indication-mode +1)
 (blink-cursor-mode -1)
 (setq inhibit-splash-screen +1)
 (setq visible-bell +1)
 (setq linum-format "%d ")
+(fringe-mode -1)
+
+;; get rid of line numbering graphical artifacts
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string
+                     (count-lines (point-min) (point-max)))))
+         (linum-format (concat " %" (number-to-string w) "d ")))
+    ad-do-it))
 
 ;; access international keys with right option
 (setq ns-right-alternate-modifier 'none)
@@ -175,6 +184,8 @@
 
 (global-set-key (kbd "C-<down>") 'move-line-down)
 (global-set-key (kbd "C-<up>") 'move-line-up)
+
+
 
 ;; Make new lines above or below
 (defun open-line-below ()

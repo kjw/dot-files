@@ -1,8 +1,7 @@
+(require 'solarized)
 
-<!-- saved from url=(0089)https://raw.github.com/sellout/emacs-color-theme-solarized/master/solarized-dark-theme.el -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">(require 'solarized-definitions
-         (locate-file "solarized-definitions.el" custom-theme-load-path
-                      '("c" "")))
+(deftheme solarized-dark "The dark variant of the Solarized colour theme")
 
-(create-solarized-theme dark)
-</pre></body></html>
+(create-solarized-theme 'dark 'solarized-dark)
+
+(provide-theme 'solarized-dark)

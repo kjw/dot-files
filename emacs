@@ -71,6 +71,9 @@
 	(:name helm
 	       :after (progn
 			(helm-mode 1)))
+	(:name solarized-theme
+	       :after (progn
+			(load-theme 'solarized-light)))
 	(:name js2-mode
 	       :after (progn
 			(setq-default js2-basic-offset 2)))))
@@ -80,7 +83,7 @@
        '(clojure-mode ruby-mode cider
 	 smartparens yari helm rainbow-mode
 	 multiple-cursors gist smooth-scrolling
-	 markdown-mode)
+	 markdown-mode ido-vertical-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
@@ -104,6 +107,8 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (ido-mode +1)
+;(ido-vertical-mode -1)
+(ido-everywhere 1)
 (show-paren-mode +1)
 (global-linum-mode +1)
 (global-hl-line-mode +1)
@@ -127,10 +132,6 @@
 
 ;; run as a server
 (server-start)
-
-;; set theme
-(add-to-list 'custom-theme-load-path "~/.emacs-themes/")
-(load-theme 'solarized-light t)
 
 ;; and set some face attributes
 (set-default-font "Inconsolata-12")
@@ -249,6 +250,16 @@
  
 (global-set-key (kbd "C-:") 'toggle-clj-keyword-string)
 
+;; ac-nrepl-compliement stuff (not yet packaged)
+;; (load "/home/karl/.emacs.d/ac-nrepl-compliment.el")
+;; (require 'ac-nrepl-compliment)
+;; (add-hook 'nrepl-mode-hook 'ac-nrepl-compliment-setup)
+;; (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-compliment-setup)
+;; (eval-after-load "auto-complete"
+;;   '(add-to-list 'ac-modes 'nrepl-mode))
+
+;; (define-key nrepl-interaction-mode-map (kbd "C-c C-d") 'ac-nrepl-compliment-popup-doc)
+
 ;; Set up easy access to a bunch of common views
 (global-set-key (kbd "<f1>") 'org-agenda)
 (global-set-key (kbd "<f2>") 'dired)
@@ -258,12 +269,21 @@
 (global-set-key (kbd "C-c <up>") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c a") 'mc/mark-all-like-this)
 
+;; elfeed config
+(setq elfeed-feeds
+      '(("http://planet.clojure.in/atom.xml" clojure)
+	("http://aeon.co/magazine/feed/" reading)
+	("http://feeds.feedburner.com/EconomicPrincipals" reading economics)
+	("http://thebrowser.com/feed/" reading)
+	("http://feeds2.feedburner.com/tomdispatch/esUU" reading)
+	("http://planet.emacsen.org/atom/xml" emacs)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("47d67fd920f3b2c4407b59bcefab7e8af35f8db297bc15531eb4b528fe661ccd" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "752b605b3db4d76d7d8538bbc6fe8828f6d92a720c0ea334b4e01cea44d4b7a9" "c9d00d43bd5ad4eb7fa4c0e865b666216dfac4584eede68fbd20d7582013a703" default)))
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "47d67fd920f3b2c4407b59bcefab7e8af35f8db297bc15531eb4b528fe661ccd" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "752b605b3db4d76d7d8538bbc6fe8828f6d92a720c0ea334b4e01cea44d4b7a9" "c9d00d43bd5ad4eb7fa4c0e865b666216dfac4584eede68fbd20d7582013a703" default)))
  '(fci-rule-color "#383838")
  '(send-mail-function nil))
 (custom-set-faces

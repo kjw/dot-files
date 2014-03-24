@@ -25,6 +25,7 @@ xmonad $ defaultConfig
      , ("M-a d", spawn "dmenu_doc")
      , ("M-a f", spawn "dmenu_locate")
      , ("M-a q", spawn "dmenu_ddg")
+     , ("M-a n", spawn "gnome-control-center network")
      , ("<XF86AudioMute>", spawn "pulseaudio-ctl mute && paplay /usr/share/pommed/click.wav")
      , ("<XF86AudioRaiseVolume>", spawn "pulseaudio-ctl up && paplay /usr/share/pommed/click.wav")
      , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down && paplay /usr/share/pommed/click.wav")

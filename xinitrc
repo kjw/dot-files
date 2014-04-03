@@ -22,17 +22,28 @@ export GNOME_KEYRING_PID
 xsetroot -cursor_name left_ptr
 
 # Switch some keys around
-setxkbmap -layout
+setxkbmap gb 
 xmodmap ~/.Xmodmap
 
 # Set a reasonable key repeat rate
 xset r rate 200 25
 
 # Select a reasonable colour profile
-xcalib "~/colours/Color LCD-00000610-0000-9CF3-0000-000004273CC0.icc"
+# xcalib "~/colours/Color LCD-00000610-0000-9CF3-0000-000004273CC0.icc"
 
 # Pick a random wallpaper
 feh --bg-scale -z ~/wallpapers
+
+# Little tray
+stalonetray &
+nm-applet &
+#pasystray &
+
+#/usr/lib/gnome-settings-daemon/gnome-settings-daemon &
+
+# Nice looking window fade in/out and shadows
+# xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 -f -D 7 &
+# compton --backend glx -Cf &
 
 # Launch xmonad with dbus
 exec dbus-launch --sh-syntax --exit-with-session xmonad

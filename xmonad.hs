@@ -26,12 +26,10 @@ xmonad $ defaultConfig
      , ("M-a f", spawn "dmenu_locate")
      , ("M-a q", spawn "dmenu_ddg")
      , ("M-a n", spawn "gnome-control-center network")
-     , ("<XF86AudioMute>", spawn "pulseaudio-ctl mute && paplay /usr/share/pommed/click.wav")
-     , ("<XF86AudioRaiseVolume>", spawn "pulseaudio-ctl up && paplay /usr/share/pommed/click.wav")
-     , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down && paplay /usr/share/pommed/click.wav")
-     , ("<XF86MonBrightnessDown>", spawn "xbacklight - 10%")
-     , ("<XF86MonBrightnessUp>", spawn "xbacklight + 10%")
-     , ("<XF86KbdBrightnessUp>", spawn "keyboard_backlight.sh up")
-     , ("<XF86KbdBrightnessDown>", spawn "keyboard_backlight.sh down")
+     , ("<XF86AudioMute>", spawn "dzen_volume toggle")
+     , ("<XF86AudioRaiseVolume>", spawn "dzen_volume up")
+     , ("<XF86AudioLowerVolume>", spawn "dzen_volume down")
+     , ("<XF86MonBrightnessDown>", spawn "dzen_brightness down")
+     , ("<XF86MonBrightnessUp>", spawn "dzen_brightness up")
      , ("M-s", spawn "dmenu_ssh")
-     , ("M-p", spawn "dmenu_run -fn 'Inconsolata-20' -b -nb '#002b36' -nf '#93a1a1' -sb '#073642' -sf '#cb4b16' -p '?>'")]
+     , ("M-p", spawn "dmenu_run -fn 'ClearSans-20' -b -nb '#002b36' -nf '#93a1a1' -sb '#073642' -sf '#cb4b16' -p '?>'")]

@@ -11,3 +11,5 @@ done
 mkdir ~/.xmonad
 ln -s $dir/xmonad.hs ~/.xmonad/xmonad.hs
 
+mkdir ~/.lein
+ln -s $dir/profiles.clj ~/.lein/profiles.clj

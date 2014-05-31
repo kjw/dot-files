@@ -11,7 +11,7 @@ Config { font = "xft:Inconsolata:size=12:antialias=true"
        , alignSep = "}{"
        , allDesktops = True
        , overrideRedirect = True
-       , template = " %date% | %EGVN% | %battery% | %cpu% | %memory% | %wlp3s0%"
+       , template = "}{ %EGVN% | %wlp3s0% | %battery% | %cpu% | %memory% | %date% "
        , commands = 
          [ 
            Run Weather "EGVN" ["-t","<tempC>C <rh>%","-L","14","-H","25","--normal","#859900","--high","#cb4b16","--low","#2aa198"] 36000

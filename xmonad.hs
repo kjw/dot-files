@@ -5,7 +5,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig
  
 main = do
-xmproc <- spawnPipe "/usr/bin/xmobar /home/karl/.xmobarrc" 
+xmproc <- spawnPipe "/usr/bin/xmobar-1" 
 xmonad $ defaultConfig
      { manageHook = manageDocks <+> manageHook defaultConfig
      , layoutHook = avoidStruts  $ layoutHook defaultConfig	
@@ -18,13 +18,13 @@ xmonad $ defaultConfig
      `additionalKeysP`
      [ ("M-o", spawn "xrandr --output eDP1 --auto")
      , ("M-S-o", spawn "xrandr --output eDP1 --off")
-     , ("M-w", spawn "xrandr --auto")
+     , ("M-a x", spawn "xrandr --auto")
      , ("M-a y", spawn "play-youtube")
      , ("M-a t", spawn "terminator -e 'ssh -t pi ./t'")
      , ("M-a v", spawn "dmenu_video")
      , ("M-a d", spawn "dmenu_doc")
      , ("M-a f", spawn "dmenu_locate")
-     , ("M-a q", spawn "dmenu_ddg")
+     , ("M-x", spawn "dmenu_ddg")
      , ("M-a n", spawn "gnome-control-center network")
      , ("<XF86AudioMute>", spawn "dzen_volume toggle")
      , ("<XF86AudioRaiseVolume>", spawn "dzen_volume up")
@@ -32,4 +32,4 @@ xmonad $ defaultConfig
      , ("<XF86MonBrightnessDown>", spawn "dzen_brightness down")
      , ("<XF86MonBrightnessUp>", spawn "dzen_brightness up")
      , ("M-s", spawn "dmenu_ssh")
-     , ("M-p", spawn "dmenu_run -fn 'ClearSans-20' -b -nb '#002b36' -nf '#93a1a1' -sb '#073642' -sf '#cb4b16' -p '?>'")]
+     , ("M-p", spawn "dmenu_cmd")]

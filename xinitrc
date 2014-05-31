@@ -32,7 +32,7 @@ xset r rate 200 25
 # xcalib "~/colours/Color LCD-00000610-0000-9CF3-0000-000004273CC0.icc"
 
 # Pick a random wallpaper
-feh --bg-scale -z ~/wallpapers
+feh --bg-fill -z ~/wallpapers
 
 # Little tray
 stalonetray &

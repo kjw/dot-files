@@ -31,5 +31,6 @@ xmonad $ defaultConfig
      , ("<XF86AudioLowerVolume>", spawn "dzen_volume down")
      , ("<XF86MonBrightnessDown>", spawn "dzen_brightness down")
      , ("<XF86MonBrightnessUp>", spawn "dzen_brightness up")
+     , ("<XF86Calculator>", spawn "gnome-calculator")
      , ("M-s", spawn "dmenu_ssh")
      , ("M-p", spawn "dmenu_cmd")]

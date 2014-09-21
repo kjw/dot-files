@@ -37,7 +37,10 @@ feh --bg-fill -z ~/wallpapers
 # Little tray
 stalonetray &
 nm-applet &
-#pasystray &
+pasystray &
+
+# Lock the screen after 5 minutes of inactivity
+xautolock -time 5 -detectsleep -locker slock &
 
 #/usr/lib/gnome-settings-daemon/gnome-settings-daemon &
 

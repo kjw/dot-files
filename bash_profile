@@ -8,7 +8,7 @@
 #eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
 
 # set ruby path
-export PATH=$PATH:~/.gem/ruby/2.0.0/bin
+export PATH=$PATH:~/.gem/ruby/2.2.0/bin
 
 # look and feel
 export L_DMENU_FONT="ClearSans-20"
